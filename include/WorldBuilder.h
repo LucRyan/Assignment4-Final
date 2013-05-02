@@ -8,17 +8,6 @@ public:
 	WorldBuilder() : seed_(801){
 
 	}
-	
-	/** 
-	 * Just to locate palmiers with a pseudo-random algoritm
-	 */
-
-	float rnd_(const float& min, const float& max)
-	{
-		seed_ += Ogre::Math::PI*2.8574f + seed_*(0.3424f - 0.12434f + 0.452345f);
-		if (seed_ > 10000000000) seed_ -= 10000000000;
-		return ((max-min)*Ogre::Math::Abs(Ogre::Math::Sin(Ogre::Radian(seed_))) + min);
-	}
 
 	void createPalms(Ogre::SceneManager *mSceneMgr)
 	{
@@ -56,9 +45,45 @@ public:
 		mHouseSN->scale(Scale,Scale,Scale);
 		mHouseSN->setPosition(Pos);
 	}
+
+	void createBasic(Ogre::SceneManager *mSceneMgr, Ogre::Camera *mCamera){
+		// Set default ambient light
+		mSceneMgr->setAmbientLight(ColourValue(1, 1, 1));
+
+		// Set the Shadow
+		mSceneMgr->setShadowTechnique(SHADOWTYPE_TEXTURE_MODULATIVE_INTEGRATED);
+
+		// Create the SkyBox
+		mSceneMgr->setSkyBox(true, mSkyBoxes[mCurrentSkyBox], 99999*3, true);
+
+		// Set some camera params
+		mCamera->setFarClipDistance(999999*6);
+		mCamera->setPosition(312.902,306.419,1024.02);
+		mCamera->setOrientation(Ogre::Quaternion(0.998, -0.0121, -0.0608, -0.00074));
+
+		// Light
+		Ogre::Light *mLight = mSceneMgr->createLight("Light0");
+		mLight->setPosition(mSunPosition[mCurrentSkyBox]);
+		mLight->setDiffuseColour(1, 1, 1);
+		mLight->setSpecularColour(mSunColor[mCurrentSkyBox].x,
+			mSunColor[mCurrentSkyBox].y,
+			mSunColor[mCurrentSkyBox].z);
+	}
+
 protected:
 
 	float seed_;
+		
+	/** 
+	 * Just to locate palmiers with a pseudo-random algoritm
+	 */
+
+	float rnd_(const float& min, const float& max)
+	{
+		seed_ += Ogre::Math::PI*2.8574f + seed_*(0.3424f - 0.12434f + 0.452345f);
+		if (seed_ > 10000000000) seed_ -= 10000000000;
+		return ((max-min)*Ogre::Math::Abs(Ogre::Math::Sin(Ogre::Radian(seed_))) + min);
+	}
 
 };
 
