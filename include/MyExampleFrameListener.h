@@ -1,4 +1,4 @@
-#include "Final.h"
+#include "WaterBuilder.h"
 
 class MyExampleFrameListener : public ExampleFrameListener
 {
@@ -14,36 +14,15 @@ public:
 		mMoveSpeed = 100;
 	}
 
-	bool frameStarted(const FrameEvent &e)
+	virtual bool processUnbufferedKeyInput(const FrameEvent& e)
 	{
-		// Check camera height
-		Ogre::RaySceneQuery *raySceneQuery = 
-			mSceneMgr->
-			createRayQuery(Ogre::Ray(mCamera->getPosition() + Ogre::Vector3(0,1000000,0), 
-			Vector3::NEGATIVE_UNIT_Y));
-		Ogre::RaySceneQueryResult& qryResult = raySceneQuery->execute();
-		Ogre::RaySceneQueryResult::iterator i = qryResult.begin();
-		if (i != qryResult.end() && i->worldFragment)
-		{
-			if (mCamera->getPosition().y < i->worldFragment->singleIntersection.y + 30)
-			{
-				mCamera->
-					setPosition(mCamera->getPosition().x, 
-					i->worldFragment->singleIntersection.y + 30, 
-					mCamera->getPosition().z);
-			}
-		}
-
-		delete raySceneQuery;
-
-		// Update Hydrax
-		mHydrax->update(e.timeSinceLastFrame);
-
+		bool ret = ExampleFrameListener::processUnbufferedKeyInput(e);
 		// Check for skyboxes switch
 		mKeyboard->capture();
 
 		if (mKeyboard->isKeyDown(OIS::KC_M) && mKeyBuffer < 0)
 		{
+			PhysicsBuilder::getSingleton().addBox(mSceneMgr,mCamera);
 			mCurrentSkyBox++;
 
 			if(mCurrentSkyBox > (_def_SkyBoxNum-1))
@@ -56,9 +35,41 @@ public:
 			mKeyBuffer = 0.5f;
 		}
 
+		if (mKeyboard->isKeyDown(OIS::KC_B) && mKeyBuffer < 0)
+		{
+			PhysicsBuilder::getSingleton().addBox(mSceneMgr,mCamera);
+
+			mKeyBuffer = 0.5f;
+		}
+
 		mKeyBuffer -= e.timeSinceLastFrame;
 
-		return true;
+		return ret;
+
+	}
+
+	bool frameStarted(const FrameEvent &e)
+	{
+		bool ret = ExampleFrameListener::frameEnded(e);
+
+		PhysicsBuilder::getSingleton().getWorld()->stepSimulation(e.timeSinceLastFrame); // update Bullet Physics animation
+		
+		// Update Hydrax
+		mHydrax->update(e.timeSinceLastFrame);
+
+		return ret;
+	}
+
+
+	bool frameEnded(const FrameEvent &e){
+		bool ret = ExampleFrameListener::frameEnded(e);
+
+		PhysicsBuilder::getSingleton().getWorld()->stepSimulation(e.timeSinceLastFrame); // update Bullet Physics animation
+		
+		// Update Hydrax
+		mHydrax->update(e.timeSinceLastFrame);
+		
+		return ret;
 	}
 
 	void changeSkyBox()

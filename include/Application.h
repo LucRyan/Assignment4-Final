@@ -25,6 +25,8 @@ protected:
     // Just override the mandatory create scene method
     void createScene(void)
     {
+		// Setup Physics
+		PhysicsBuilder::getSingleton().setupPhysics(mSceneMgr);
 		// Create Basic Secne - Light, Camer, Shadow
 		worldBuilder->createBasic(mSceneMgr, mCamera);
 		// Load island
@@ -37,6 +39,7 @@ protected:
 		worldBuilder->createHouse(mSceneMgr);
 		// Add frame listener
 		mRoot->addFrameListener(new MyExampleFrameListener(mWindow, mCamera, mSceneMgr));
+
     }
 
 	void chooseSceneManager()

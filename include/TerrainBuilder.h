@@ -1,7 +1,6 @@
 #ifndef __TerrainBuilder_h_
 #define __TerrainBuilder_h_
 
-#include "Final.h"
 #include "PhysicsBuilder.h"
 
 class TerrainBuilder {
@@ -112,7 +111,7 @@ protected:
 	void configureTerrainDefaults(SceneManager *mSceneMgr, Ogre::Light* light)
 	{
 		// Configure global
-		mTerrainGlobals->setMaxPixelError(8);
+		mTerrainGlobals->setMaxPixelError(10);
 		mTerrainGlobals->setCompositeMapDistance(3000);       // testing composite map
 
 		// Important to set these so that the terrain knows what to use for derived (non-realtime) data
@@ -155,7 +154,7 @@ protected:
 		mSceneMgr->setAmbientLight(Ogre::ColourValue(0.4, 0.4, 0.4));
 		return light;
 	}
-
+	
 	void setupPhysics(SceneManager *mSceneMgr){
 
 		float *heights = new float [pageSize*pageSize];
@@ -185,7 +184,7 @@ protected:
 			PhysicsBuilder::getSingleton().getWorld()
 			);
 		Ogre::Vector3 terrainShiftPos(terrainScale.x/(pageSize-1), 0, terrainScale.z/(pageSize-1));
-		terrainShiftPos.y = terrainScale.y / 2 * terrainScale.y;
+		terrainShiftPos.y = terrainScale.y / 2 * terrainScale.y - 10;
 		
 		Ogre::SceneNode *pTerrainNode = mSceneMgr->getRootSceneNode()->createChildSceneNode();
 		terrainBody->setStaticShape(pTerrainNode, terrainShape, 0.0f, 0.8f, terrainShiftPos);
@@ -193,7 +192,7 @@ protected:
 		PhysicsBuilder::getSingleton().getShapes().push_back(terrainShape);
 		PhysicsBuilder::getSingleton().getBoides().push_back(terrainBody);
 	}
-
+	
 	void destroyScene(void)
 	{
 		OGRE_DELETE mTerrainGroup;
