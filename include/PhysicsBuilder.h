@@ -95,6 +95,9 @@ public:
 		node->attachObject(static_cast <SimpleRenderable *> (debugDrawer));
 	}
 
+	void setupMeshByName(SceneManager *mSceneMgr, String &MeshName){
+
+	}
 
 
 	void addBox(SceneManager *mSceneMgr, Camera *mCamera){
