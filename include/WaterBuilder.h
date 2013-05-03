@@ -4,32 +4,17 @@
 
 #define _def_SkyBoxNum 3
 
-// Hydrax pointer
-Hydrax::Hydrax *mHydrax = 0;
-
-//SkyBoxes
-Ogre::String mSkyBoxes[_def_SkyBoxNum] = 
-{"Sky/ClubTropicana",
-"Sky/EarlyMorning",
-"Sky/Clouds"};
-
-Ogre::Vector3 mSunPosition[_def_SkyBoxNum] = 
-{Ogre::Vector3(0,10000,0),
-Ogre::Vector3(0,10000,90000),
-Ogre::Vector3(0,10000,0)};
-
-Ogre::Vector3 mSunColor[_def_SkyBoxNum] = 
-{Ogre::Vector3(1, 0.9, 0.6),
-Ogre::Vector3(1,0.6,0.4),
-Ogre::Vector3(0.45,0.45,0.45)};
-
-int mCurrentSkyBox = 0;
-
-
-class WaterBuilder 
+class WaterBuilder : public Singleton<WaterBuilder>
 {
 public:
-	WaterBuilder(){}
+	//Singleton Function
+	static WaterBuilder &getSingleton(){
+		if(!msSingleton){
+			msSingleton = new WaterBuilder();
+		}
+		assert( msSingleton );
+		return (*msSingleton);
+	}
 
 	void configureWater(Ogre::SceneManager *mSceneMgr, Ogre::Camera *mCamera, Ogre::RenderWindow *mWindow){
 		
@@ -65,17 +50,92 @@ public:
 		// ------------------------------------------------------------------------
 	}
 
+
 	void update(const FrameEvent &e){
 		mHydrax->update(e.timeSinceLastFrame);
 	}
 	
+
+	void setupSky(SceneManager *mSceneMgr){
+		// Create the SkyBox
+		mSceneMgr->setSkyBox(true, mSkyBoxes[mCurrentSkyBox], 99999*3, true);
+		// Light
+		Ogre::Light *mLight = mSceneMgr->createLight("Light0");
+		mLight->setPosition(mSunPosition[mCurrentSkyBox]);
+		mLight->setDiffuseColour(1, 1, 1);
+		mLight->setSpecularColour(mSunColor[mCurrentSkyBox].x,
+			mSunColor[mCurrentSkyBox].y,
+			mSunColor[mCurrentSkyBox].z);
+	}
+
 	void setSunPara(Ogre::Vector3 *mSunPosition, Ogre::Vector3 *mSunColor){
 		mHydrax->setSunPosition(mSunPosition[mCurrentSkyBox]);
 		mHydrax->setSunColor(mSunColor[mCurrentSkyBox]);
 	}
 
-protected:
+	void changeSkyBox(SceneManager *mSceneMgr)
+	{
 
+		mCurrentSkyBox++;
+
+		if(mCurrentSkyBox > (_def_SkyBoxNum-1))
+		{
+			mCurrentSkyBox = 0;
+		}
+
+		// Change skybox
+		mSceneMgr->setSkyBox(true, mSkyBoxes[mCurrentSkyBox], 99999*3, true);
+
+		// Update Hydrax sun position and colour
+		mHydrax->setSunPosition(mSunPosition[mCurrentSkyBox]);
+		mHydrax->setSunColor(mSunColor[mCurrentSkyBox]);
+
+		// Update light 0 light position and colour
+		mSceneMgr->getLight("Light0")->setPosition(mSunPosition[mCurrentSkyBox]);
+		mSceneMgr->getLight("Light0")->setSpecularColour(mSunColor[mCurrentSkyBox].x,mSunColor[mCurrentSkyBox].y,mSunColor[mCurrentSkyBox].z);
+
+		// Log
+		LogManager::getSingleton().logMessage("Skybox " + mSkyBoxes[mCurrentSkyBox] + " selected. ("+Ogre::StringConverter::toString(mCurrentSkyBox+1)+"/"+Ogre::StringConverter::toString(_def_SkyBoxNum)+")");
+	}
+
+protected:
+	WaterBuilder(){
+		mHydrax = 0;
+
+		//SkyBoxes
+		mSkyBoxes[0] = "Sky/ClubTropicana";
+		mSkyBoxes[1] = "Sky/EarlyMorning";
+		mSkyBoxes[2] = "Sky/Clouds";
+
+		mSunPosition[0] = Ogre::Vector3(0,10000,0);
+		mSunPosition[1] = Ogre::Vector3(0,10000,90000);
+		mSunPosition[2] = Ogre::Vector3(0,10000,0);
+
+		mSunColor[0]= Ogre::Vector3(1, 0.9, 0.6);
+		mSunColor[1]= Ogre::Vector3(1,0.6,0.4),
+			mSunColor[2]= Ogre::Vector3(0.45,0.45,0.45);
+
+		mCurrentSkyBox = 0;
+	}
+
+	~WaterBuilder(){
+		delete mHydrax;
+		delete mSkyBoxes;
+		delete mSunColor;
+		delete mSunPosition;
+	}
+
+	// Hydrax pointer
+	Hydrax::Hydrax *mHydrax; 
+
+	//SkyBoxes
+	Ogre::String mSkyBoxes[_def_SkyBoxNum] ;
+
+	Ogre::Vector3 mSunPosition[_def_SkyBoxNum];
+
+	Ogre::Vector3 mSunColor[_def_SkyBoxNum] ;
+
+	int mCurrentSkyBox ;
 };
 
 

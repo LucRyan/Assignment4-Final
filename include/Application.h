@@ -13,13 +13,11 @@ public:
 	// Basic constructor
 	SampleApp(){
 		worldBuilder = new WorldBuilder();
-		water  = new WaterBuilder();
 		terrain  = new TerrainBuilder();
 	}
 
 protected:
 	WorldBuilder *worldBuilder;
-	WaterBuilder *water;
 	TerrainBuilder *terrain;
 
     // Just override the mandatory create scene method
@@ -32,7 +30,7 @@ protected:
 		// Load island
 		terrain->configureTerrain(mSceneMgr);      
 		// Create Water
-		water->configureWater(mSceneMgr, mCamera, mWindow);
+		WaterBuilder::getSingleton().configureWater(mSceneMgr, mCamera, mWindow);
 		// Create palms
 		worldBuilder->createPalms(mSceneMgr);
 		// Create House
