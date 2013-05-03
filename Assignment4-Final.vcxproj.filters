@@ -36,6 +36,9 @@
     <ClInclude Include="..\..\..\..\..\..\Luckin%27\Documents\Visual Studio 2010\Projects\CS539-Ogre-Assignments\Assignment4-Final\include\WorldBuilder.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\Luckin%27\Documents\Visual Studio 2010\Projects\CS539-Ogre-Assignments\Assignment4-Final\include\PhysicsBuilder.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="docs\ReadMe.txt" />

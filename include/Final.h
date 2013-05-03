@@ -25,11 +25,20 @@
 #include <Terrain/OgreTerrain.h>
 #include <Terrain/OgreTerrainGroup.h>
 
+//------------------------------------------------------------------------------
+// Include all the Physics Header
+//------------------------------------------------------------------------------
+#include "OgreBulletDynamicsRigidBody.h"	
+#include "OgreBulletCollisions.h"
+#include "Shapes/OgreBulletCollisionsTerrainShape.h"
+
+
 #define _def_SkyBoxNum 3
 
 // Hydrax pointer
 Hydrax::Hydrax *mHydrax = 0;
 
+//SkyBoxes
 Ogre::String mSkyBoxes[_def_SkyBoxNum] = 
 {"Sky/ClubTropicana",
 "Sky/EarlyMorning",
@@ -46,5 +55,7 @@ Ogre::Vector3(1,0.6,0.4),
 Ogre::Vector3(0.45,0.45,0.45)};
 
 int mCurrentSkyBox = 0;
+
+
 
 #endif // #ifndef __Water_h_

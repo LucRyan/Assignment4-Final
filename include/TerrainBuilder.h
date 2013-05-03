@@ -2,10 +2,11 @@
 #define __TerrainBuilder_h_
 
 #include "Final.h"
+#include "PhysicsBuilder.h"
 
 class TerrainBuilder {
 public:
-	TerrainBuilder() : mTerrainGlobals(0),mTerrainGroup(0),mTerrainsImported(false)
+	TerrainBuilder() : mTerrainGlobals(0),mTerrainGroup(0),mTerrainsImported(false),pageSize(513)
 	{
 
 	}
@@ -20,7 +21,7 @@ public:
 		Ogre::Light* light = CreateDirectionalLight(mSceneMgr); // Make a directional light for terrain
 
 		mTerrainGlobals = OGRE_NEW Ogre::TerrainGlobalOptions();
-		mTerrainGroup = OGRE_NEW Ogre::TerrainGroup(mSceneMgr, Ogre::Terrain::ALIGN_X_Z, 513, 12000.0f);
+		mTerrainGroup = OGRE_NEW Ogre::TerrainGroup(mSceneMgr, Ogre::Terrain::ALIGN_X_Z, pageSize, 12000.0f);
 		mTerrainGroup->setFilenameConvention(Ogre::String("Terrain"), Ogre::String("dat"));
 		mTerrainGroup->setOrigin(Ogre::Vector3(0.0, -10, 0.0));
 
@@ -41,12 +42,14 @@ public:
 				initBlendMaps(t);
 			}
 		}
+		setupPhysics(mSceneMgr);
 
 		mTerrainGroup->freeTemporaryResources();
 	}
 
 protected:
 
+	unsigned pageSize;
 	Ogre::TerrainGlobalOptions   *mTerrainGlobals;
 	Ogre::TerrainGroup         *mTerrainGroup;
 	bool mTerrainsImported;
@@ -119,7 +122,7 @@ protected:
 
 		// Configure default import settings for if we use imported image
 		Ogre::Terrain::ImportData& defaultimp = mTerrainGroup->getDefaultImportSettings();
-		defaultimp.terrainSize = 513; // 513;
+		defaultimp.terrainSize = pageSize; // 513;
 		defaultimp.worldSize = 12000.0f;      
 		defaultimp.inputScale = 600; //600; // 
 		defaultimp.minBatchSize = 33;
@@ -151,6 +154,44 @@ protected:
 
 		mSceneMgr->setAmbientLight(Ogre::ColourValue(0.4, 0.4, 0.4));
 		return light;
+	}
+
+	void setupPhysics(SceneManager *mSceneMgr){
+
+		float *heights = new float [pageSize*pageSize];
+		Ogre::Vector3 terrainScale(12000.0f / (pageSize-1), 600, 12000.0f / (pageSize-1));
+		Ogre::Image img;
+
+		img.load("terrain.png", Ogre::ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME);
+
+		for(unsigned y = 0; y < pageSize; ++y)
+		{
+			for(unsigned x = 0; x < pageSize; ++x)
+			{
+				Ogre::ColourValue color = img.getColourAt(x, y, 0);
+				heights[x + y * pageSize] = color.r;
+			}
+		}
+		OgreBulletCollisions::HeightmapCollisionShape *terrainShape = new OgreBulletCollisions::HeightmapCollisionShape(
+			pageSize,
+			pageSize,
+			terrainScale,
+			heights,
+			true
+			);
+
+		OgreBulletDynamics::RigidBody *terrainBody = new OgreBulletDynamics::RigidBody(
+			"Terrain",
+			PhysicsBuilder::getSingleton().getWorld()
+			);
+		Ogre::Vector3 terrainShiftPos(terrainScale.x/(pageSize-1), 0, terrainScale.z/(pageSize-1));
+		terrainShiftPos.y = terrainScale.y / 2 * terrainScale.y;
+		
+		Ogre::SceneNode *pTerrainNode = mSceneMgr->getRootSceneNode()->createChildSceneNode();
+		terrainBody->setStaticShape(pTerrainNode, terrainShape, 0.0f, 0.8f, terrainShiftPos);
+		//terrainBody->setPosition(terrainBody->getWorldPosition()-Ogre::Vector3(0.005, 0, 0.005));
+		PhysicsBuilder::getSingleton().getShapes().push_back(terrainShape);
+		PhysicsBuilder::getSingleton().getBoides().push_back(terrainBody);
 	}
 
 	void destroyScene(void)
