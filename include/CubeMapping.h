@@ -101,6 +101,7 @@ protected:
 		mCubeCamera->setAspectRatio(1);
 		mCubeCamera->setFixedYawAxis(false);
 		mCubeCamera->setNearClipDistance(10);
+		mCubeCamera->setFarClipDistance(999999*6);
 
 		// create our dynamic cube map texture
 		TexturePtr tex = TextureManager::getSingleton().createManual("dyncubemap",

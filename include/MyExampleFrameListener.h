@@ -51,6 +51,8 @@ public:
 		WaterBuilder::getSingleton().update(e);
 		// Update CubeMap
 		CubeMapping::getSingleton().update(e);
+		// Update SphereMap
+		SphereMapping::getSingleton().update(e);
 
 		return ret;
 	}
@@ -65,7 +67,7 @@ public:
 		WaterBuilder::getSingleton().update(e);
 		// Update CubeMap
 		CubeMapping::getSingleton().update(e);
-		
+
 		return ret;
 	}
 
@@ -73,6 +75,7 @@ public:
 	void preRenderTargetUpdate(const RenderTargetEvent& evt)
 	{
 		CubeMapping::getSingleton().preRenderTargetUpdate(evt);
+		SphereMapping::getSingleton().preRenderTargetUpdate(evt, mCamera);
 	}
 
 	void postRenderTargetUpdate(const RenderTargetEvent& evt)

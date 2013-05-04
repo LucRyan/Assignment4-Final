@@ -31,8 +31,6 @@ protected:
 		worldBuilder->createBasic(mSceneMgr, mCamera);
 		// Load island
 		terrain->configureTerrain(mSceneMgr);      
-		// Create Water
-		WaterBuilder::getSingleton().configureWater(mSceneMgr, mCamera, mWindow);
 		// Create palms
 		worldBuilder->createPalms(mSceneMgr);
 		// Create House
@@ -40,6 +38,10 @@ protected:
 		// Create CubeMap
 		MyExampleFrameListener *mListener = new MyExampleFrameListener(mWindow, mCamera, mSceneMgr);
 		CubeMapping::getSingleton().setupContent(mSceneMgr,mListener);
+		// Create SphereMap
+		SphereMapping::getSingleton().setupContent(mSceneMgr,mListener,mWindow);
+		// Create Water
+		WaterBuilder::getSingleton().configureWater(mSceneMgr, mCamera, mWindow);
 		// Add frame listener
 		mRoot->addFrameListener(mListener);
 

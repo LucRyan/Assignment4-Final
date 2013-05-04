@@ -40,7 +40,7 @@ public:
 		Pos = Ogre::Vector3(1000, 500, 400);
 
 		Ogre::Entity *mHouseEnt = mSceneMgr->createEntity("House", "tudorhouse.mesh");
-		Ogre::SceneNode* mHouseSN = mSceneMgr->getRootSceneNode()->createChildSceneNode()->createChildSceneNode();
+		Ogre::SceneNode* mHouseSN = mSceneMgr->getRootSceneNode()->createChildSceneNode()->createChildSceneNode("House");
 		mHouseSN->attachObject(mHouseEnt);
 		Ogre::Real Scale = 0.6;
 		mHouseSN->scale(Scale,Scale,Scale);
