@@ -5,6 +5,8 @@
 #include "WaterBuilder.h"
 #include "TerrainBuilder.h"
 #include "WorldBuilder.h"
+#include "CubeMapping.h"
+#include "SphereMapping.h"
 #include "MyExampleFrameListener.h"
 
 class SampleApp : public ExampleApplication
@@ -13,7 +15,7 @@ public:
 	// Basic constructor
 	SampleApp(){
 		worldBuilder = new WorldBuilder();
-		terrain  = new TerrainBuilder();
+		terrain  = new TerrainBuilder();	
 	}
 
 protected:
@@ -35,8 +37,11 @@ protected:
 		worldBuilder->createPalms(mSceneMgr);
 		// Create House
 		worldBuilder->createHouse(mSceneMgr);
+		// Create CubeMap
+		MyExampleFrameListener *mListener = new MyExampleFrameListener(mWindow, mCamera, mSceneMgr);
+		CubeMapping::getSingleton().setupContent(mSceneMgr,mListener);
 		// Add frame listener
-		mRoot->addFrameListener(new MyExampleFrameListener(mWindow, mCamera, mSceneMgr));
+		mRoot->addFrameListener(mListener);
 
     }
 

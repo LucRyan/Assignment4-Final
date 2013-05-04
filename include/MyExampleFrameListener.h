@@ -1,6 +1,6 @@
 #include "WaterBuilder.h"
 
-class MyExampleFrameListener : public ExampleFrameListener
+class MyExampleFrameListener : public ExampleFrameListener , public RenderTargetListener
 {
 public:
 	SceneManager *mSceneMgr;
@@ -44,11 +44,13 @@ public:
 	bool frameStarted(const FrameEvent &e)
 	{
 		bool ret = ExampleFrameListener::frameEnded(e);
-
-		PhysicsBuilder::getSingleton().getWorld()->stepSimulation(e.timeSinceLastFrame); // update Bullet Physics animation
 		
+		// Update Physics
+		PhysicsBuilder::getSingleton().getWorld()->stepSimulation(e.timeSinceLastFrame); // update Bullet Physics animation
 		// Update Hydrax
 		WaterBuilder::getSingleton().update(e);
+		// Update CubeMap
+		CubeMapping::getSingleton().update(e);
 
 		return ret;
 	}
@@ -57,12 +59,25 @@ public:
 	bool frameEnded(const FrameEvent &e){
 		bool ret = ExampleFrameListener::frameEnded(e);
 
+		// Update Physics
 		PhysicsBuilder::getSingleton().getWorld()->stepSimulation(e.timeSinceLastFrame); // update Bullet Physics animation
-		
 		// Update Hydrax
 		WaterBuilder::getSingleton().update(e);
+		// Update CubeMap
+		CubeMapping::getSingleton().update(e);
 		
 		return ret;
+	}
+
+
+	void preRenderTargetUpdate(const RenderTargetEvent& evt)
+	{
+		CubeMapping::getSingleton().preRenderTargetUpdate(evt);
+	}
+
+	void postRenderTargetUpdate(const RenderTargetEvent& evt)
+	{
+		CubeMapping::getSingleton().postRenderTargetUpdate(evt);
 	}
 
 };
