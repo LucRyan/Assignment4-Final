@@ -164,6 +164,7 @@ pip-log.txt
 
 #Personal Crap
 lib/
-obj/
 media/
+obj/
+
 
