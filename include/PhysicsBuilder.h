@@ -10,7 +10,8 @@
 #include "OgreBulletDynamicsRigidBody.h"	
 #include "OgreBulletCollisions.h"
 #include "Shapes/OgreBulletCollisionsTerrainShape.h"
-#include "Shapes/OgreBulletCollisionsBoxShape.h"	
+#include "Shapes/OgreBulletCollisionsBoxShape.h"
+#include "Shapes/OgreBulletCollisionsCapsuleShape.h"
 
 
 class PhysicsBuilder 
@@ -82,8 +83,13 @@ public:
 		return mShapes;
 	}
 
+	void addCollisionShape(OgreBulletCollisions::CollisionShape* colShape){
+		mShapes.push_back(colShape);
+	};
+
 	void addBox(SceneManager *mSceneMgr, Camera *mCamera);
 	void setupPhysics(SceneManager *mSceneMgr);
+	
 };
 
 

@@ -38,7 +38,7 @@ ControllerPhysics::ControllerPhysics(btPairCachingGhostObject * ghostObject, btC
 	mVerticalVelocity = 0;
 	mGravity = 9.8 * 3;
 	mFallSpeed = 55;
-	mJumpSpeed = 10;
+	mJumpSpeed = 30;
 	mWasOnGround = false;
 	mWasJumping = false;
 	setMaxSlope(btRadians(45));

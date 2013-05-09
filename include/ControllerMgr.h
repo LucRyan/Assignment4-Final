@@ -9,9 +9,9 @@ using namespace Ogre;
 class ControllerMgr
 {
 private:
-	static const int RUN_SPEED = 17;
+	static const int RUN_SPEED = 50;
 	static const int TURN_SPEED = 500;
-	static const int CAM_HEIGHT = 2;
+	static const int CAM_HEIGHT = 10;
 
 	ControllerPhysics * mCCPhysics;
 	Player * mCCPlayer;

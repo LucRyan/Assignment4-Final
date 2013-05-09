@@ -55,9 +55,9 @@ public:
 		mSceneMgr->setShadowTechnique(SHADOWTYPE_TEXTURE_MODULATIVE_INTEGRATED);
 
 		// Set some camera params
-		mCamera->setFarClipDistance(999999*6);
-		mCamera->setPosition(312.902,306.419,1024.02);
-		mCamera->setOrientation(Ogre::Quaternion(0.998, -0.0121, -0.0608, -0.00074));
+		//mCamera->setFarClipDistance(999999*6);
+		//mCamera->setPosition(312.902,306.419,1024.02);
+		//mCamera->setOrientation(Ogre::Quaternion(0.998, -0.0121, -0.0608, -0.00074));
 
 		WaterBuilder::getSingleton().setupSky(mSceneMgr);
 	}

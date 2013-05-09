@@ -20,7 +20,9 @@ void Player::setupBody(SceneManager * sceneMgr, Vector3 & origin)
 {
 	mBodyNode = sceneMgr->getRootSceneNode()->createChildSceneNode(origin);
 	mBodyEnt = sceneMgr->createEntity("SinbadNode", "Sinbad.mesh");
+	mBodyNode->scale(Vector3(10,10,10));
 	mBodyNode->attachObject(mBodyEnt);
+
 }
 
 void Player::setupAnimations()

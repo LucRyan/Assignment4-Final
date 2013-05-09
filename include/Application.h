@@ -8,6 +8,7 @@
 #include "CubeMapping.h"
 #include "SphereMapping.h"
 #include "MyExampleFrameListener.h"
+#include "ControllerMgr.h"
 
 class SampleApp : public ExampleApplication
 {
@@ -21,6 +22,7 @@ public:
 protected:
 	WorldBuilder *worldBuilder;
 	TerrainBuilder *terrain;
+	ControllerMgr * mCharacter;
 
     // Just override the mandatory create scene method
     void createScene(void)
@@ -35,22 +37,64 @@ protected:
 		worldBuilder->createPalms(mSceneMgr);
 		// Create House
 		worldBuilder->createHouse(mSceneMgr);
+		// Add Actor
+		setupCharacter();
 		// Create CubeMap
-		MyExampleFrameListener *mListener = new MyExampleFrameListener(mWindow, mCamera, mSceneMgr);
-		CubeMapping::getSingleton().setupContent(mSceneMgr,mListener);
+		MyExampleFrameListener *mFrameListener = new MyExampleFrameListener(mWindow, mCamera, mSceneMgr,mCharacter);
+		CubeMapping::getSingleton().setupContent(mSceneMgr,mFrameListener);
 		// Create SphereMap
-		SphereMapping::getSingleton().setupContent(mSceneMgr,mListener,mWindow);
+		SphereMapping::getSingleton().setupContent(mSceneMgr,mFrameListener,mWindow);
 		// Create Water
 		WaterBuilder::getSingleton().configureWater(mSceneMgr, mCamera, mWindow);
-		// Add frame listener
-		mRoot->addFrameListener(mListener);
 
+		// Add frame listener
+		mRoot->addFrameListener(mFrameListener);
     }
 
 	void chooseSceneManager()
 	{       
 		// Create the SceneManager, in this case a generic one
 		mSceneMgr = mRoot->createSceneManager(ST_GENERIC, "ExampleSMInstance");
+	}
+
+	
+	void createFrameListener()override{
+		
+	}
+
+	void setupCharacter(){
+		btTransform startTransform;
+		startTransform.setIdentity();
+		startTransform.setOrigin(btVector3(10, 500, 500));
+		Vector3 origin(10, 500, 500);
+
+		btPairCachingGhostObject * characterGhostObject = new btPairCachingGhostObject();
+		characterGhostObject->setWorldTransform(startTransform);
+
+		btScalar characterHeight = 80.f;
+		btScalar characterWidth = 10.f;
+
+		//OgreBulletCollisions::CapsuleCollisionShape * capsule = new OgreBulletCollisions::CapsuleCollisionShape(characterWidth, characterHeight, Vector3(0,0,0));
+		btConvexShape * capsule = new btCapsuleShape(characterWidth, characterHeight);
+
+		PhysicsBuilder::getSingleton().addCollisionShape((OgreBulletCollisions::CapsuleCollisionShape*)capsule);
+		characterGhostObject->setCollisionShape(capsule);
+		characterGhostObject->setCollisionFlags(btCollisionObject::CF_CHARACTER_OBJECT);
+
+		// duck setup
+		//OgreBulletCollisions::CapsuleCollisionShape *  duck = new OgreBulletCollisions::CapsuleCollisionShape(characterWidth, characterHeight / 3, Vector3(0,0,0));
+		btConvexShape * duck = new btCapsuleShape(characterWidth, characterHeight/3);
+		PhysicsBuilder::getSingleton().addCollisionShape((OgreBulletCollisions::CapsuleCollisionShape*)duck);
+
+		btScalar stepHeight = 3.5f;
+		mCharacter = new ControllerMgr(mSceneMgr, mCamera, characterGhostObject, capsule, stepHeight, 
+									   PhysicsBuilder::getSingleton().getWorld()->getBulletCollisionWorld(), origin);
+		mCharacter->getCCPhysics()->setDuckingConvexShape(duck);
+
+		PhysicsBuilder::getSingleton().getWorld()->getBulletDynamicsWorld()->getBroadphase()->getOverlappingPairCache()->setInternalGhostPairCallback(new btGhostPairCallback());
+
+		PhysicsBuilder::getSingleton().getWorld()->getBulletDynamicsWorld()->addCollisionObject(characterGhostObject, btBroadphaseProxy::CharacterFilter, btBroadphaseProxy::StaticFilter | btBroadphaseProxy::DefaultFilter);
+		PhysicsBuilder::getSingleton().getWorld()->getBulletDynamicsWorld()->addAction(mCharacter->getCCPhysics());
 	}
 
 };

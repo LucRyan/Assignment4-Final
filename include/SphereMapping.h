@@ -34,6 +34,9 @@ public:
 			mSphereCamera->setFixedYawAxis(true, Ogre::Vector3::UNIT_Y);
 		}
 	}
+	
+	//if wangxiaopangzi=dapangzi
+	//	then wangxiaopangzi is pangzi forever
 
 	void postRenderTargetUpdate(const RenderTargetEvent& evt)
 	{

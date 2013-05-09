@@ -194,7 +194,7 @@ void ControllerMgr::setupCamera(Camera * cam)
 {
 	mCameraPivot = mSceneManager->getRootSceneNode()->createChildSceneNode();
 
-	mCameraGoal = mCameraPivot->createChildSceneNode(Vector3(0, 0, 15));
+	mCameraGoal = mCameraPivot->createChildSceneNode(Vector3(0, 0, 5));
 
 	mCameraNode = mSceneManager->getRootSceneNode()->createChildSceneNode();
 	mCameraNode->setPosition(mCameraPivot->getPosition() + mCameraGoal->getPosition());
@@ -204,8 +204,9 @@ void ControllerMgr::setupCamera(Camera * cam)
 	mCameraNode->setFixedYawAxis(true);
 
 	cam->setNearClipDistance(0.1);
+	cam->setFarClipDistance(999999*6);
 	mCameraNode->attachObject(cam);
-	mCameraNode->setAutoTracking(true, mCameraPivot);
+	//mCameraNode->setAutoTracking(true, mCameraPivot);
 
 	mPivotPitch = 0;
 }
