@@ -67,7 +67,7 @@ protected:
 	float seed_;
 		
 	/** 
-	 * Just to locate palmiers with a pseudo-random algoritm
+	 * Just to locate palms with a pseudo-random algorithm
 	 */
 
 	float rnd_(const float& min, const float& max)

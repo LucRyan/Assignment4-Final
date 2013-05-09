@@ -13,37 +13,127 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Header Files\Scene">
+      <UniqueIdentifier>{ea2f8f3d-9b0c-4622-b444-55017da7b14e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Application">
+      <UniqueIdentifier>{8e21aff2-1c8c-4ea8-8f0b-8084e3b837be}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Hydrax">
+      <UniqueIdentifier>{221f7d96-1891-4b53-b5ee-08bee3d892c8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Actor">
+      <UniqueIdentifier>{1330eb28-3d2c-42d9-b3d4-724327c1497b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Scene">
+      <UniqueIdentifier>{37c47fd6-44a3-4821-a2ce-e1a771e70487}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Actor">
+      <UniqueIdentifier>{44e0e017-d9db-4b86-bf89-2172cad0b0e0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="res\Resource.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\Final.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\..\..\..\Luckin%27\Documents\Visual Studio 2010\Projects\CS539-Ogre-Assignments\Assignment4-Final\include\Application.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Application</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\..\..\Luckin%27\Documents\Visual Studio 2010\Projects\CS539-Ogre-Assignments\Assignment4-Final\include\MyExampleFrameListener.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\TerrainBuilder.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\WaterBuilder.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\..\..\Luckin%27\Documents\Visual Studio 2010\Projects\CS539-Ogre-Assignments\Assignment4-Final\include\WorldBuilder.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\..\..\Luckin%27\Documents\Visual Studio 2010\Projects\CS539-Ogre-Assignments\Assignment4-Final\include\PhysicsBuilder.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Application</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\..\..\Luckin%27\Documents\Visual Studio 2010\Projects\CS539-Ogre-Assignments\Assignment4-Final\include\CubeMapping.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\Luckin%27\Documents\Visual Studio 2010\Projects\CS539-Ogre-Assignments\Assignment4-Final\include\WorldBuilder.h">
+      <Filter>Header Files\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\Luckin%27\Documents\Visual Studio 2010\Projects\CS539-Ogre-Assignments\Assignment4-Final\include\PhysicsBuilder.h">
+      <Filter>Header Files\Scene</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\..\..\Luckin%27\Documents\Visual Studio 2010\Projects\CS539-Ogre-Assignments\Assignment4-Final\include\SphereMapping.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="include\TerrainBuilder.h">
+      <Filter>Header Files\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="include\WaterBuilder.h">
+      <Filter>Header Files\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Final.h">
+      <Filter>Header Files\Application</Filter>
+    </ClInclude>
+    <ClInclude Include="res\Resource.h">
+      <Filter>Header Files\Application</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\Luckin%27\Documents\Visual Studio 2010\Projects\CS539-Ogre-Assignments\Assignment4-Final\include\Hydrax\CfgFileManager.h">
+      <Filter>Header Files\Hydrax</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\Luckin%27\Documents\Visual Studio 2010\Projects\CS539-Ogre-Assignments\Assignment4-Final\include\Hydrax\TextureManager.h">
+      <Filter>Header Files\Hydrax</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\Luckin%27\Documents\Visual Studio 2010\Projects\CS539-Ogre-Assignments\Assignment4-Final\include\Hydrax\DecalsManager.h">
+      <Filter>Header Files\Hydrax</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\Luckin%27\Documents\Visual Studio 2010\Projects\CS539-Ogre-Assignments\Assignment4-Final\include\Hydrax\Enums.h">
+      <Filter>Header Files\Hydrax</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\Luckin%27\Documents\Visual Studio 2010\Projects\CS539-Ogre-Assignments\Assignment4-Final\include\Hydrax\Noise\FFT\FFT.h">
+      <Filter>Header Files\Hydrax</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\Luckin%27\Documents\Visual Studio 2010\Projects\CS539-Ogre-Assignments\Assignment4-Final\include\Hydrax\GodRaysManager.h">
+      <Filter>Header Files\Hydrax</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\Luckin%27\Documents\Visual Studio 2010\Projects\CS539-Ogre-Assignments\Assignment4-Final\include\Hydrax\GPUNormalMapManager.h">
+      <Filter>Header Files\Hydrax</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\Luckin%27\Documents\Visual Studio 2010\Projects\CS539-Ogre-Assignments\Assignment4-Final\include\Hydrax\Help.h">
+      <Filter>Header Files\Hydrax</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\Luckin%27\Documents\Visual Studio 2010\Projects\CS539-Ogre-Assignments\Assignment4-Final\include\Hydrax\Hydrax.h">
+      <Filter>Header Files\Hydrax</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\Luckin%27\Documents\Visual Studio 2010\Projects\CS539-Ogre-Assignments\Assignment4-Final\include\Hydrax\Image.h">
+      <Filter>Header Files\Hydrax</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\Luckin%27\Documents\Visual Studio 2010\Projects\CS539-Ogre-Assignments\Assignment4-Final\include\Hydrax\MaterialManager.h">
+      <Filter>Header Files\Hydrax</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\Luckin%27\Documents\Visual Studio 2010\Projects\CS539-Ogre-Assignments\Assignment4-Final\include\Hydrax\Mesh.h">
+      <Filter>Header Files\Hydrax</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\Luckin%27\Documents\Visual Studio 2010\Projects\CS539-Ogre-Assignments\Assignment4-Final\include\Hydrax\Modules\Module.h">
+      <Filter>Header Files\Hydrax</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\Luckin%27\Documents\Visual Studio 2010\Projects\CS539-Ogre-Assignments\Assignment4-Final\include\Hydrax\Noise\Noise.h">
+      <Filter>Header Files\Hydrax</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\Luckin%27\Documents\Visual Studio 2010\Projects\CS539-Ogre-Assignments\Assignment4-Final\include\Hydrax\Noise\Perlin\Perlin.h">
+      <Filter>Header Files\Hydrax</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\Luckin%27\Documents\Visual Studio 2010\Projects\CS539-Ogre-Assignments\Assignment4-Final\include\Hydrax\Prerequisites.h">
+      <Filter>Header Files\Hydrax</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\Luckin%27\Documents\Visual Studio 2010\Projects\CS539-Ogre-Assignments\Assignment4-Final\include\Hydrax\Modules\ProjectedGrid\ProjectedGrid.h">
+      <Filter>Header Files\Hydrax</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\Luckin%27\Documents\Visual Studio 2010\Projects\CS539-Ogre-Assignments\Assignment4-Final\include\Hydrax\Modules\RadialGrid\RadialGrid.h">
+      <Filter>Header Files\Hydrax</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\Luckin%27\Documents\Visual Studio 2010\Projects\CS539-Ogre-Assignments\Assignment4-Final\include\Hydrax\RttManager.h">
+      <Filter>Header Files\Hydrax</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\Luckin%27\Documents\Visual Studio 2010\Projects\CS539-Ogre-Assignments\Assignment4-Final\include\Hydrax\Modules\SimpleGrid\SimpleGrid.h">
+      <Filter>Header Files\Hydrax</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\Luckin%27\Documents\Visual Studio 2010\Projects\CS539-Ogre-Assignments\Assignment4-Final\include\Hydrax\Structs.h">
+      <Filter>Header Files\Hydrax</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\Luckin%27\Documents\Visual Studio 2010\Projects\CS539-Ogre-Assignments\Assignment4-Final\include\ControllerPhysics.h">
+      <Filter>Header Files\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\Luckin%27\Documents\Visual Studio 2010\Projects\CS539-Ogre-Assignments\Assignment4-Final\include\Player.h">
+      <Filter>Header Files\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\Luckin%27\Documents\Visual Studio 2010\Projects\CS539-Ogre-Assignments\Assignment4-Final\include\ControllerMgr.h">
+      <Filter>Header Files\Actor</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -61,8 +151,20 @@
     <ClCompile Include="src\Final.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\Luckin%27\Documents\Visual Studio 2010\Projects\CS539-Ogre-Assignments\Assignment4-Final\src\ControllerPhysics.cpp">
+      <Filter>Source Files\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\Luckin%27\Documents\Visual Studio 2010\Projects\CS539-Ogre-Assignments\Assignment4-Final\src\Player.cpp">
+      <Filter>Source Files\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\Luckin%27\Documents\Visual Studio 2010\Projects\CS539-Ogre-Assignments\Assignment4-Final\src\PhysicsBuilder.cpp">
+      <Filter>Source Files\Scene</Filter>
+    </ClCompile>
     <ClCompile Include="src\SingletonInit.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\Luckin%27\Documents\Visual Studio 2010\Projects\CS539-Ogre-Assignments\Assignment4-Final\src\ControllerMgr.cpp">
+      <Filter>Source Files\Actor</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

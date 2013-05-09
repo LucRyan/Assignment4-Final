@@ -46,7 +46,7 @@ public:
 		bool ret = ExampleFrameListener::frameEnded(e);
 		
 		// Update Physics
-		PhysicsBuilder::getSingleton().getWorld()->stepSimulation(e.timeSinceLastFrame); // update Bullet Physics animation
+		PhysicsBuilder::getSingleton().getWorld()->stepSimulation(e.timeSinceLastFrame, 10); // update Bullet Physics animation
 		// Update Hydrax
 		WaterBuilder::getSingleton().update(e);
 		// Update CubeMap
@@ -62,7 +62,7 @@ public:
 		bool ret = ExampleFrameListener::frameEnded(e);
 
 		// Update Physics
-		PhysicsBuilder::getSingleton().getWorld()->stepSimulation(e.timeSinceLastFrame); // update Bullet Physics animation
+		PhysicsBuilder::getSingleton().getWorld()->stepSimulation(e.timeSinceLastFrame, 10); // update Bullet Physics animation
 		// Update Hydrax
 		WaterBuilder::getSingleton().update(e);
 		// Update CubeMap

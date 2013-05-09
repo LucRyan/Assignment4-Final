@@ -115,9 +115,33 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\..\..\..\Luckin%27\Documents\Visual Studio 2010\Projects\CS539-Ogre-Assignments\Assignment4-Final\include\Application.h" />
+    <ClInclude Include="..\..\..\..\..\..\Luckin%27\Documents\Visual Studio 2010\Projects\CS539-Ogre-Assignments\Assignment4-Final\include\ControllerMgr.h" />
+    <ClInclude Include="..\..\..\..\..\..\Luckin%27\Documents\Visual Studio 2010\Projects\CS539-Ogre-Assignments\Assignment4-Final\include\ControllerPhysics.h" />
     <ClInclude Include="..\..\..\..\..\..\Luckin%27\Documents\Visual Studio 2010\Projects\CS539-Ogre-Assignments\Assignment4-Final\include\CubeMapping.h" />
+    <ClInclude Include="..\..\..\..\..\..\Luckin%27\Documents\Visual Studio 2010\Projects\CS539-Ogre-Assignments\Assignment4-Final\include\Hydrax\CfgFileManager.h" />
+    <ClInclude Include="..\..\..\..\..\..\Luckin%27\Documents\Visual Studio 2010\Projects\CS539-Ogre-Assignments\Assignment4-Final\include\Hydrax\DecalsManager.h" />
+    <ClInclude Include="..\..\..\..\..\..\Luckin%27\Documents\Visual Studio 2010\Projects\CS539-Ogre-Assignments\Assignment4-Final\include\Hydrax\Enums.h" />
+    <ClInclude Include="..\..\..\..\..\..\Luckin%27\Documents\Visual Studio 2010\Projects\CS539-Ogre-Assignments\Assignment4-Final\include\Hydrax\GodRaysManager.h" />
+    <ClInclude Include="..\..\..\..\..\..\Luckin%27\Documents\Visual Studio 2010\Projects\CS539-Ogre-Assignments\Assignment4-Final\include\Hydrax\GPUNormalMapManager.h" />
+    <ClInclude Include="..\..\..\..\..\..\Luckin%27\Documents\Visual Studio 2010\Projects\CS539-Ogre-Assignments\Assignment4-Final\include\Hydrax\Help.h" />
+    <ClInclude Include="..\..\..\..\..\..\Luckin%27\Documents\Visual Studio 2010\Projects\CS539-Ogre-Assignments\Assignment4-Final\include\Hydrax\Hydrax.h" />
+    <ClInclude Include="..\..\..\..\..\..\Luckin%27\Documents\Visual Studio 2010\Projects\CS539-Ogre-Assignments\Assignment4-Final\include\Hydrax\Image.h" />
+    <ClInclude Include="..\..\..\..\..\..\Luckin%27\Documents\Visual Studio 2010\Projects\CS539-Ogre-Assignments\Assignment4-Final\include\Hydrax\MaterialManager.h" />
+    <ClInclude Include="..\..\..\..\..\..\Luckin%27\Documents\Visual Studio 2010\Projects\CS539-Ogre-Assignments\Assignment4-Final\include\Hydrax\Mesh.h" />
+    <ClInclude Include="..\..\..\..\..\..\Luckin%27\Documents\Visual Studio 2010\Projects\CS539-Ogre-Assignments\Assignment4-Final\include\Hydrax\Modules\Module.h" />
+    <ClInclude Include="..\..\..\..\..\..\Luckin%27\Documents\Visual Studio 2010\Projects\CS539-Ogre-Assignments\Assignment4-Final\include\Hydrax\Modules\ProjectedGrid\ProjectedGrid.h" />
+    <ClInclude Include="..\..\..\..\..\..\Luckin%27\Documents\Visual Studio 2010\Projects\CS539-Ogre-Assignments\Assignment4-Final\include\Hydrax\Modules\RadialGrid\RadialGrid.h" />
+    <ClInclude Include="..\..\..\..\..\..\Luckin%27\Documents\Visual Studio 2010\Projects\CS539-Ogre-Assignments\Assignment4-Final\include\Hydrax\Modules\SimpleGrid\SimpleGrid.h" />
+    <ClInclude Include="..\..\..\..\..\..\Luckin%27\Documents\Visual Studio 2010\Projects\CS539-Ogre-Assignments\Assignment4-Final\include\Hydrax\Noise\FFT\FFT.h" />
+    <ClInclude Include="..\..\..\..\..\..\Luckin%27\Documents\Visual Studio 2010\Projects\CS539-Ogre-Assignments\Assignment4-Final\include\Hydrax\Noise\Noise.h" />
+    <ClInclude Include="..\..\..\..\..\..\Luckin%27\Documents\Visual Studio 2010\Projects\CS539-Ogre-Assignments\Assignment4-Final\include\Hydrax\Noise\Perlin\Perlin.h" />
+    <ClInclude Include="..\..\..\..\..\..\Luckin%27\Documents\Visual Studio 2010\Projects\CS539-Ogre-Assignments\Assignment4-Final\include\Hydrax\Prerequisites.h" />
+    <ClInclude Include="..\..\..\..\..\..\Luckin%27\Documents\Visual Studio 2010\Projects\CS539-Ogre-Assignments\Assignment4-Final\include\Hydrax\RttManager.h" />
+    <ClInclude Include="..\..\..\..\..\..\Luckin%27\Documents\Visual Studio 2010\Projects\CS539-Ogre-Assignments\Assignment4-Final\include\Hydrax\Structs.h" />
+    <ClInclude Include="..\..\..\..\..\..\Luckin%27\Documents\Visual Studio 2010\Projects\CS539-Ogre-Assignments\Assignment4-Final\include\Hydrax\TextureManager.h" />
     <ClInclude Include="..\..\..\..\..\..\Luckin%27\Documents\Visual Studio 2010\Projects\CS539-Ogre-Assignments\Assignment4-Final\include\MyExampleFrameListener.h" />
     <ClInclude Include="..\..\..\..\..\..\Luckin%27\Documents\Visual Studio 2010\Projects\CS539-Ogre-Assignments\Assignment4-Final\include\PhysicsBuilder.h" />
+    <ClInclude Include="..\..\..\..\..\..\Luckin%27\Documents\Visual Studio 2010\Projects\CS539-Ogre-Assignments\Assignment4-Final\include\Player.h" />
     <ClInclude Include="..\..\..\..\..\..\Luckin%27\Documents\Visual Studio 2010\Projects\CS539-Ogre-Assignments\Assignment4-Final\include\SphereMapping.h" />
     <ClInclude Include="..\..\..\..\..\..\Luckin%27\Documents\Visual Studio 2010\Projects\CS539-Ogre-Assignments\Assignment4-Final\include\WorldBuilder.h" />
     <ClInclude Include="include\TerrainBuilder.h" />
@@ -126,6 +150,10 @@
     <ClInclude Include="res\Resource.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\..\..\..\Luckin%27\Documents\Visual Studio 2010\Projects\CS539-Ogre-Assignments\Assignment4-Final\src\ControllerMgr.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\Luckin%27\Documents\Visual Studio 2010\Projects\CS539-Ogre-Assignments\Assignment4-Final\src\ControllerPhysics.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\Luckin%27\Documents\Visual Studio 2010\Projects\CS539-Ogre-Assignments\Assignment4-Final\src\PhysicsBuilder.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\Luckin%27\Documents\Visual Studio 2010\Projects\CS539-Ogre-Assignments\Assignment4-Final\src\Player.cpp" />
     <ClCompile Include="src\SingletonInit.cpp" />
     <ClCompile Include="src\Final.cpp" />
   </ItemGroup>
