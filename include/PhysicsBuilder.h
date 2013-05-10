@@ -33,6 +33,7 @@ protected:
 	
 	PhysicsBuilder(){
 		pbSingleton = 0;
+		mNumEntitiesInstanced = 0;
 	}
 
 	~PhysicsBuilder()

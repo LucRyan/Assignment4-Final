@@ -65,14 +65,14 @@ protected:
 	void setupCharacter(){
 		btTransform startTransform;
 		startTransform.setIdentity();
-		startTransform.setOrigin(btVector3(10, 500, 500));
-		Vector3 origin(10, 500, 500);
+		startTransform.setOrigin(btVector3(10, 500, 0));
+		Vector3 origin(10, 500, 0);
 
 		btPairCachingGhostObject * characterGhostObject = new btPairCachingGhostObject();
 		characterGhostObject->setWorldTransform(startTransform);
 
-		btScalar characterHeight = 80.f;
-		btScalar characterWidth = 10.f;
+		btScalar characterHeight = 64.f;
+		btScalar characterWidth = 8.f;
 
 		//OgreBulletCollisions::CapsuleCollisionShape * capsule = new OgreBulletCollisions::CapsuleCollisionShape(characterWidth, characterHeight, Vector3(0,0,0));
 		btConvexShape * capsule = new btCapsuleShape(characterWidth, characterHeight);

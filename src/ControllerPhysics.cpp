@@ -37,7 +37,7 @@ ControllerPhysics::ControllerPhysics(btPairCachingGhostObject * ghostObject, btC
 	mVerticalOffset = 0;
 	mVerticalVelocity = 0;
 	mGravity = 9.8 * 3;
-	mFallSpeed = 55;
+	mFallSpeed = 100;
 	mJumpSpeed = 30;
 	mWasOnGround = false;
 	mWasJumping = false;

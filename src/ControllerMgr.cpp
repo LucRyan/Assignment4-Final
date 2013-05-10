@@ -194,7 +194,7 @@ void ControllerMgr::setupCamera(Camera * cam)
 {
 	mCameraPivot = mSceneManager->getRootSceneNode()->createChildSceneNode();
 
-	mCameraGoal = mCameraPivot->createChildSceneNode(Vector3(0, 0, 5));
+	mCameraGoal = mCameraPivot->createChildSceneNode(Vector3(0, 0, 450));
 
 	mCameraNode = mSceneManager->getRootSceneNode()->createChildSceneNode();
 	mCameraNode->setPosition(mCameraPivot->getPosition() + mCameraGoal->getPosition());
@@ -206,7 +206,7 @@ void ControllerMgr::setupCamera(Camera * cam)
 	cam->setNearClipDistance(0.1);
 	cam->setFarClipDistance(999999*6);
 	mCameraNode->attachObject(cam);
-	//mCameraNode->setAutoTracking(true, mCameraPivot);
+	mCameraNode->setAutoTracking(true, mCameraPivot);
 
 	mPivotPitch = 0;
 }
@@ -216,7 +216,7 @@ void ControllerMgr::updateCamera(Real deltaTime)
 	mCameraPivot->setPosition(mBodyNode->getPosition() + Vector3::UNIT_Y * CAM_HEIGHT);
 
 	Vector3 goalOffset = mCameraGoal->_getDerivedPosition() - mCameraNode->getPosition();
-	mCameraNode->translate(goalOffset * deltaTime * 9);
+	mCameraNode->translate(goalOffset * deltaTime * 7);
 }
 
 void ControllerMgr::updateCameraGoal(Real deltaYaw, Real deltaPitch, Real deltaZoom)

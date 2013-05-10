@@ -14,15 +14,14 @@ private:
 	OIS::Keyboard * mKeyboard;
 	OIS::Mouse * mMouse;
 
-
 public:
 	SceneManager *mSceneMgr;
 	Real mKeyBuffer;
 
-
 	MyExampleFrameListener(RenderWindow* win, Camera* cam, SceneManager *sm,  ControllerMgr * ch)
 		: mWindow(win),
 		  mCamera(cam),
+		  mSceneMgr(sm),
 		  mController(ch),
 		  mShutdown(false)
 	{
