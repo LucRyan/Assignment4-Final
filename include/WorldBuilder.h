@@ -3,11 +3,16 @@
 
 #include "Final.h"
 #include "WaterBuilder.h"
+#include "OpenSteer/OpenSteerDemo.h"
 
 class WorldBuilder{
 public:
 	WorldBuilder() : seed_(801){
 
+	}
+	~WorldBuilder()
+	{
+		delete mFishSwimMap;
 	}
 
 	void createPalms(Ogre::SceneManager *mSceneMgr)
@@ -62,8 +67,73 @@ public:
 		WaterBuilder::getSingleton().setupSky(mSceneMgr);
 	}
 
-protected:
+	void addBoidsToScene(SceneManager* mSceneMgr){
+		OpenSteer::OpenSteerDemo::initialize();
+		OpenSteer::OpenSteerDemo::updateSimulationAndRedraw ();  //steer
+		const OpenSteer::AVGroup& all = OpenSteer::OpenSteerDemo::allVehiclesOfSelectedPlugIn();
+		mFishSwimMap = OGRE_NEW std::map<std::string, AnimationState*>();
 
+		int count = 0;
+		Ogre::Entity* fishEnt;
+		Ogre::SceneNode* Bird;
+		for (OpenSteer::AVIterator i = all.begin(); i != all.end(); i++)
+		{
+			// Create an Entity
+			fishEnt = mSceneMgr->createEntity("BoidsFish"+Ogre::StringConverter::toString(count), "fish.mesh");
+			AnimationState* mFishSwim;
+			mFishSwim = fishEnt->getAnimationState("swim");
+			mFishSwim->setEnabled(true);
+			mFishSwimMap->insert(std::make_pair<std::string, AnimationState*>("FishAnimation" + Ogre::StringConverter::toString(count), mFishSwim));
+			
+
+			// Create a SceneNode and attach the Entity to it
+			Bird = mSceneMgr->getRootSceneNode()->createChildSceneNode("BoidsFish"+Ogre::StringConverter::toString(count));
+			Bird->attachObject(fishEnt);
+			Bird->scale(3, 3, 3);
+			Ogre::Vector3 facing((**i).forward().x,(**i).forward().y,(**i).forward().z);
+			Bird->setDirection(facing.x, facing.y, facing.z, Ogre::Node::TS_WORLD, Ogre::Vector3::UNIT_Z);
+			//Bird->showBoundingBox(true);
+			count++;
+		}
+	}
+
+	void updateSteer(SceneManager* mSceneMgr, const FrameEvent & evt){
+		OpenSteer::OpenSteerDemo::updateSimulationAndRedraw ();  //steer
+		const OpenSteer::AVGroup& all = OpenSteer::OpenSteerDemo::allVehiclesOfSelectedPlugIn();
+
+		int count = 0;
+		Ogre::SceneNode* Fishes;
+		for (OpenSteer::AVIterator i = all.begin(); i != all.end(); i++) 	{
+			Fishes = mSceneMgr->getSceneNode("BoidsFish"+Ogre::StringConverter::toString(count));
+			Ogre::Vector3 oldPos = Fishes->getPosition();
+			Ogre::Vector3 newPos = Ogre::Vector3( (**i).position().x * 20 + 2400, 
+												  (**i).position().y + 50 , 
+												  (**i).position().z * 10 + 1600);
+
+			Fishes->setPosition( newPos );
+			mFishSwimMap->at("FishAnimation" + Ogre::StringConverter::toString(count))->addTime(evt.timeSinceLastFrame * 3);
+
+			Ogre::Vector3 dir = newPos - oldPos;
+			dir.y = 0;
+			dir.normalise();
+
+			if ((1.0f + Ogre::Vector3::UNIT_Z.dotProduct(dir)) < 0.0001f)
+			{
+				Fishes->yaw(Ogre::Degree(180));
+			}
+			else
+			{
+				Ogre::Quaternion quat = Ogre::Vector3::UNIT_X.getRotationTo(-dir);
+				Fishes->setOrientation(quat);
+			}
+
+			count++;
+		}
+	}
+
+
+protected:
+	std::map<std::string, AnimationState*> * mFishSwimMap;
 	float seed_;
 		
 	/** 

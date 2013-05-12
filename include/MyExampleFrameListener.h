@@ -13,16 +13,18 @@ private:
 	OIS::InputManager * mInputManager;
 	OIS::Keyboard * mKeyboard;
 	OIS::Mouse * mMouse;
+	WorldBuilder * worldBuilder;
 
 public:
 	SceneManager *mSceneMgr;
 	Real mKeyBuffer;
 
-	MyExampleFrameListener(RenderWindow* win, Camera* cam, SceneManager *sm,  ControllerMgr * ch)
+	MyExampleFrameListener(RenderWindow* win, Camera* cam, SceneManager *sm,  ControllerMgr * ch, WorldBuilder* wb)
 		: mWindow(win),
 		  mCamera(cam),
 		  mSceneMgr(sm),
 		  mController(ch),
+		  worldBuilder(wb),
 		  mShutdown(false)
 	{
 		OIS::ParamList pl;
@@ -55,6 +57,8 @@ public:
 
 		// Update Actor
 		mController->updateCharacter(evt.timeSinceLastFrame);
+		// Update Boids
+		worldBuilder->updateSteer(mSceneMgr, evt);
 
 		return true;
 	}

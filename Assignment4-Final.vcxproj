@@ -70,7 +70,7 @@
       <OutputFile>$(OutDir)\$(ProjectName).exe</OutputFile>
       <TargetMachine>MachineX86</TargetMachine>
       <AdditionalLibraryDirectories>$(OGRE_HOME)\lib\debug;$(OGRE_HOME)\boost\lib;$(BULLET_ROOT)\lib;$(OGRE_HOME)\ogreaddons\ogrebullet\lib\$(Configuration);$(OGRE_HOME)\lib\debug\Hydrax;$(OGRE_HOME)\lib\$(Configuration)\OpenSteer;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>OgreMain_d.lib;OIS_d.lib;OgreTerrain_d.lib;OgrePaging_d.lib;OgreBulletCollisions_d.lib;OgreBulletDynamics_d.lib;BulletCollision_vs2010_debug.lib;BulletDynamics_vs2010_debug.lib;BulletSoftBody_vs2010_debug.lib;ConvexDecomposition_vs2010_debug.lib;HACD_vs2010_debug.lib;LinearMath_vs2010_debug.lib;OpenGLSupport_vs2010_debug.lib;Hydrax_d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>OgreMain_d.lib;OIS_d.lib;OgreTerrain_d.lib;OgrePaging_d.lib;OgreBulletCollisions_d.lib;OgreBulletDynamics_d.lib;BulletCollision_vs2010_debug.lib;BulletDynamics_vs2010_debug.lib;BulletSoftBody_vs2010_debug.lib;ConvexDecomposition_vs2010_debug.lib;HACD_vs2010_debug.lib;LinearMath_vs2010_debug.lib;OpenGLSupport_vs2010_debug.lib;Hydrax_d.lib;opensteerd.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
       <Message>Copying exe to samples bin directory ...</Message>
@@ -140,6 +140,22 @@
     <ClInclude Include="..\..\..\..\..\..\Luckin%27\Documents\Visual Studio 2010\Projects\CS539-Ogre-Assignments\Assignment4-Final\include\Hydrax\Structs.h" />
     <ClInclude Include="..\..\..\..\..\..\Luckin%27\Documents\Visual Studio 2010\Projects\CS539-Ogre-Assignments\Assignment4-Final\include\Hydrax\TextureManager.h" />
     <ClInclude Include="..\..\..\..\..\..\Luckin%27\Documents\Visual Studio 2010\Projects\CS539-Ogre-Assignments\Assignment4-Final\include\MyExampleFrameListener.h" />
+    <ClInclude Include="..\..\..\..\..\..\Luckin%27\Documents\Visual Studio 2010\Projects\CS539-Ogre-Assignments\Assignment4-Final\include\OpenSteer\AbstractVehicle.h" />
+    <ClInclude Include="..\..\..\..\..\..\Luckin%27\Documents\Visual Studio 2010\Projects\CS539-Ogre-Assignments\Assignment4-Final\include\OpenSteer\Annotation.h" />
+    <ClInclude Include="..\..\..\..\..\..\Luckin%27\Documents\Visual Studio 2010\Projects\CS539-Ogre-Assignments\Assignment4-Final\include\OpenSteer\Camera.h" />
+    <ClInclude Include="..\..\..\..\..\..\Luckin%27\Documents\Visual Studio 2010\Projects\CS539-Ogre-Assignments\Assignment4-Final\include\OpenSteer\Clock.h" />
+    <ClInclude Include="..\..\..\..\..\..\Luckin%27\Documents\Visual Studio 2010\Projects\CS539-Ogre-Assignments\Assignment4-Final\include\OpenSteer\Draw.h" />
+    <ClInclude Include="..\..\..\..\..\..\Luckin%27\Documents\Visual Studio 2010\Projects\CS539-Ogre-Assignments\Assignment4-Final\include\OpenSteer\LocalSpace.h" />
+    <ClInclude Include="..\..\..\..\..\..\Luckin%27\Documents\Visual Studio 2010\Projects\CS539-Ogre-Assignments\Assignment4-Final\include\OpenSteer\lq.h" />
+    <ClInclude Include="..\..\..\..\..\..\Luckin%27\Documents\Visual Studio 2010\Projects\CS539-Ogre-Assignments\Assignment4-Final\include\OpenSteer\Obstacle.h" />
+    <ClInclude Include="..\..\..\..\..\..\Luckin%27\Documents\Visual Studio 2010\Projects\CS539-Ogre-Assignments\Assignment4-Final\include\OpenSteer\OpenSteerDemo.h" />
+    <ClInclude Include="..\..\..\..\..\..\Luckin%27\Documents\Visual Studio 2010\Projects\CS539-Ogre-Assignments\Assignment4-Final\include\OpenSteer\Pathway.h" />
+    <ClInclude Include="..\..\..\..\..\..\Luckin%27\Documents\Visual Studio 2010\Projects\CS539-Ogre-Assignments\Assignment4-Final\include\OpenSteer\PlugIn.h" />
+    <ClInclude Include="..\..\..\..\..\..\Luckin%27\Documents\Visual Studio 2010\Projects\CS539-Ogre-Assignments\Assignment4-Final\include\OpenSteer\Proximity.h" />
+    <ClInclude Include="..\..\..\..\..\..\Luckin%27\Documents\Visual Studio 2010\Projects\CS539-Ogre-Assignments\Assignment4-Final\include\OpenSteer\SimpleVehicle.h" />
+    <ClInclude Include="..\..\..\..\..\..\Luckin%27\Documents\Visual Studio 2010\Projects\CS539-Ogre-Assignments\Assignment4-Final\include\OpenSteer\SteerLibrary.h" />
+    <ClInclude Include="..\..\..\..\..\..\Luckin%27\Documents\Visual Studio 2010\Projects\CS539-Ogre-Assignments\Assignment4-Final\include\OpenSteer\Utilities.h" />
+    <ClInclude Include="..\..\..\..\..\..\Luckin%27\Documents\Visual Studio 2010\Projects\CS539-Ogre-Assignments\Assignment4-Final\include\OpenSteer\Vec3.h" />
     <ClInclude Include="..\..\..\..\..\..\Luckin%27\Documents\Visual Studio 2010\Projects\CS539-Ogre-Assignments\Assignment4-Final\include\PhysicsBuilder.h" />
     <ClInclude Include="..\..\..\..\..\..\Luckin%27\Documents\Visual Studio 2010\Projects\CS539-Ogre-Assignments\Assignment4-Final\include\Player.h" />
     <ClInclude Include="..\..\..\..\..\..\Luckin%27\Documents\Visual Studio 2010\Projects\CS539-Ogre-Assignments\Assignment4-Final\include\SphereMapping.h" />
@@ -152,6 +168,8 @@
   <ItemGroup>
     <ClCompile Include="..\..\..\..\..\..\Luckin%27\Documents\Visual Studio 2010\Projects\CS539-Ogre-Assignments\Assignment4-Final\src\ControllerMgr.cpp" />
     <ClCompile Include="..\..\..\..\..\..\Luckin%27\Documents\Visual Studio 2010\Projects\CS539-Ogre-Assignments\Assignment4-Final\src\ControllerPhysics.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\Luckin%27\Documents\Visual Studio 2010\Projects\CS539-Ogre-Assignments\Assignment4-Final\src\OpenSteer\Boids.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\Luckin%27\Documents\Visual Studio 2010\Projects\CS539-Ogre-Assignments\Assignment4-Final\src\OpenSteer\OpenSteerDemo.cpp" />
     <ClCompile Include="..\..\..\..\..\..\Luckin%27\Documents\Visual Studio 2010\Projects\CS539-Ogre-Assignments\Assignment4-Final\src\PhysicsBuilder.cpp" />
     <ClCompile Include="..\..\..\..\..\..\Luckin%27\Documents\Visual Studio 2010\Projects\CS539-Ogre-Assignments\Assignment4-Final\src\Player.cpp" />
     <ClCompile Include="src\SingletonInit.cpp" />

@@ -31,6 +31,12 @@
     <Filter Include="Source Files\Actor">
       <UniqueIdentifier>{44e0e017-d9db-4b86-bf89-2172cad0b0e0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\OpenSteer">
+      <UniqueIdentifier>{7816a3ac-0053-4222-a30e-f44779c605f4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\OpenSteer">
+      <UniqueIdentifier>{4ae77284-8deb-4937-aa5b-51f0863e31b7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\..\..\..\Luckin%27\Documents\Visual Studio 2010\Projects\CS539-Ogre-Assignments\Assignment4-Final\include\Application.h">
@@ -135,6 +141,54 @@
     <ClInclude Include="..\..\..\..\..\..\Luckin%27\Documents\Visual Studio 2010\Projects\CS539-Ogre-Assignments\Assignment4-Final\include\ControllerMgr.h">
       <Filter>Header Files\Actor</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\Luckin%27\Documents\Visual Studio 2010\Projects\CS539-Ogre-Assignments\Assignment4-Final\include\OpenSteer\AbstractVehicle.h">
+      <Filter>Header Files\OpenSteer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\Luckin%27\Documents\Visual Studio 2010\Projects\CS539-Ogre-Assignments\Assignment4-Final\include\OpenSteer\Vec3.h">
+      <Filter>Header Files\OpenSteer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\Luckin%27\Documents\Visual Studio 2010\Projects\CS539-Ogre-Assignments\Assignment4-Final\include\OpenSteer\Annotation.h">
+      <Filter>Header Files\OpenSteer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\Luckin%27\Documents\Visual Studio 2010\Projects\CS539-Ogre-Assignments\Assignment4-Final\include\OpenSteer\Camera.h">
+      <Filter>Header Files\OpenSteer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\Luckin%27\Documents\Visual Studio 2010\Projects\CS539-Ogre-Assignments\Assignment4-Final\include\OpenSteer\Clock.h">
+      <Filter>Header Files\OpenSteer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\Luckin%27\Documents\Visual Studio 2010\Projects\CS539-Ogre-Assignments\Assignment4-Final\include\OpenSteer\Draw.h">
+      <Filter>Header Files\OpenSteer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\Luckin%27\Documents\Visual Studio 2010\Projects\CS539-Ogre-Assignments\Assignment4-Final\include\OpenSteer\LocalSpace.h">
+      <Filter>Header Files\OpenSteer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\Luckin%27\Documents\Visual Studio 2010\Projects\CS539-Ogre-Assignments\Assignment4-Final\include\OpenSteer\lq.h">
+      <Filter>Header Files\OpenSteer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\Luckin%27\Documents\Visual Studio 2010\Projects\CS539-Ogre-Assignments\Assignment4-Final\include\OpenSteer\Obstacle.h">
+      <Filter>Header Files\OpenSteer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\Luckin%27\Documents\Visual Studio 2010\Projects\CS539-Ogre-Assignments\Assignment4-Final\include\OpenSteer\OpenSteerDemo.h">
+      <Filter>Header Files\OpenSteer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\Luckin%27\Documents\Visual Studio 2010\Projects\CS539-Ogre-Assignments\Assignment4-Final\include\OpenSteer\Pathway.h">
+      <Filter>Header Files\OpenSteer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\Luckin%27\Documents\Visual Studio 2010\Projects\CS539-Ogre-Assignments\Assignment4-Final\include\OpenSteer\PlugIn.h">
+      <Filter>Header Files\OpenSteer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\Luckin%27\Documents\Visual Studio 2010\Projects\CS539-Ogre-Assignments\Assignment4-Final\include\OpenSteer\Proximity.h">
+      <Filter>Header Files\OpenSteer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\Luckin%27\Documents\Visual Studio 2010\Projects\CS539-Ogre-Assignments\Assignment4-Final\include\OpenSteer\SimpleVehicle.h">
+      <Filter>Header Files\OpenSteer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\Luckin%27\Documents\Visual Studio 2010\Projects\CS539-Ogre-Assignments\Assignment4-Final\include\OpenSteer\SteerLibrary.h">
+      <Filter>Header Files\OpenSteer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\Luckin%27\Documents\Visual Studio 2010\Projects\CS539-Ogre-Assignments\Assignment4-Final\include\OpenSteer\Utilities.h">
+      <Filter>Header Files\OpenSteer</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="docs\ReadMe.txt" />
@@ -165,6 +219,12 @@
     </ClCompile>
     <ClCompile Include="..\..\..\..\..\..\Luckin%27\Documents\Visual Studio 2010\Projects\CS539-Ogre-Assignments\Assignment4-Final\src\ControllerMgr.cpp">
       <Filter>Source Files\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\Luckin%27\Documents\Visual Studio 2010\Projects\CS539-Ogre-Assignments\Assignment4-Final\src\OpenSteer\OpenSteerDemo.cpp">
+      <Filter>Source Files\OpenSteer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\Luckin%27\Documents\Visual Studio 2010\Projects\CS539-Ogre-Assignments\Assignment4-Final\src\OpenSteer\Boids.cpp">
+      <Filter>Source Files\OpenSteer</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

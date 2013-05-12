@@ -37,10 +37,12 @@ protected:
 		worldBuilder->createPalms(mSceneMgr);
 		// Create House
 		worldBuilder->createHouse(mSceneMgr);
+		// Create Boids
+		worldBuilder->addBoidsToScene(mSceneMgr);
 		// Add Actor
 		setupCharacter();
 		// Create CubeMap
-		MyExampleFrameListener *mFrameListener = new MyExampleFrameListener(mWindow, mCamera, mSceneMgr,mCharacter);
+		MyExampleFrameListener *mFrameListener = new MyExampleFrameListener(mWindow, mCamera, mSceneMgr, mCharacter, worldBuilder);
 		CubeMapping::getSingleton().setupContent(mSceneMgr,mFrameListener);
 		// Create SphereMap
 		SphereMapping::getSingleton().setupContent(mSceneMgr,mFrameListener,mWindow);
